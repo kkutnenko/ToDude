@@ -14,6 +14,7 @@ class ItemListTableViewController: UITableViewController, SwipeTableViewCellDele
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   
   var items = [Item]()
+    
   
   var category: Category?
   
@@ -24,11 +25,13 @@ class ItemListTableViewController: UITableViewController, SwipeTableViewCellDele
       preferredStyle: .alert
     )
     var tempTextField = UITextField()
+    
     let alertAction = UIAlertAction(title: "Done", style: .default) { (_) in
       let newItem = Item(context: self.context)
       if let text = tempTextField.text, text != "" {
-        newItem.title = text
-        newItem.completed = false\\
+        newItem.title = text;
+        newItem.completed = false;
+        newItem.category = self.category
         
         self.items.append(newItem)
         self.saveItems()
@@ -103,12 +106,20 @@ class ItemListTableViewController: UITableViewController, SwipeTableViewCellDele
   
   func loadItems(search: String?){
     let request: NSFetchRequest<Item> = Item.fetchRequest()
+    let predicate: NSCompoundPredicate
+    
+    let categoryPredicate = NSPredicate(format: "category.name MATCHES %@", category?.name ?? "")
+    
     if let searchText = search {
-      let predicate = NSPredicate( format: "title CONTAINS[c] %@", searchText)
-      request.predicate = predicate
+      let searchPredicate = NSPredicate( format: "title CONTAINS[c] %@", searchText)
+      predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, searchPredicate])
       let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
       request.sortDescriptors = [sortDescriptor]
+    } else {
+        predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate])
     }
+    
+    request.predicate = predicate
     
     do{
       items = try context.fetch(request)

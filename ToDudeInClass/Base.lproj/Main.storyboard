@@ -48,7 +48,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skf-R0-tOD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795.6521739130435" y="50.892857142857139"/>
+            <point key="canvasLocation" x="312" y="-615"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="InV-lj-Tae">
@@ -66,7 +66,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USA-Tp-ee6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-114.49275362318842" y="50.892857142857139"/>
+            <point key="canvasLocation" x="-1188" y="-615"/>
         </scene>
         <!--Category List Table View Controller-->
         <scene sceneID="LjD-N8-KN2">
@@ -77,10 +77,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="qZu-U3-cWK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="qZu-U3-cWK" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qZu-U3-cWK" id="IJn-R0-XCz">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qZu-U3-cWK" id="IJn-R0-XCz" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
@@ -92,9 +92,15 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Item" id="EXr-3M-Cfu"/>
+                        <barButtonItem title="Item" id="TJk-Uy-usn"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="G5T-ER-mXe"/>
+                    <navigationItem key="navigationItem" id="G5T-ER-mXe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EXr-3M-Cfu">
+                            <connections>
+                                <action selector="addCategotyButtonTapped:" destination="Nih-FX-H0E" id="SNq-He-F6m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="cZq-is-HxM" kind="show" identifier="showItems" id="lgE-os-ECj"/>
@@ -102,7 +108,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntn-zV-xTb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="212" y="-622"/>
+            <point key="canvasLocation" x="-433" y="-615"/>
         </scene>
     </scenes>
     <resources>
